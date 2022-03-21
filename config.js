@@ -2497,7 +2497,7 @@ module.exports = kconfig = async (kill, message) => {
 				break
 				
 			case 'dono':
-				if (!isGroupAdmins && !isOwner) return await kill.reply(from, mess.sodono(), id)
+				if (!isOwner) return await kill.reply(from, mess.sodono(), id)
 				await kill.reply(from, mess.owner(), id)
 				break
 				
