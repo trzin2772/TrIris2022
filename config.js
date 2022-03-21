@@ -1597,7 +1597,7 @@ module.exports = kconfig = async (kill, message) => {
 				break
 				
 			case 'clear':
-				if (!isOwner) return await kill.reply(from, mess.sodono(), id)
+				if (!isGroupAdmins && !isOwner) return await kill.reply(from, mess.sodono(), id)
 				const allChatz = await kill.getAllChats()
 				for (let dchat of allChatz) { await kill.clearChat(dchat.id) } // Se quiser deletar os chats, use 'await kill.deleteChat(dchat.id)', mas cuidado com fake, welcome, blacklist e outros.
 				await kill.reply(from, mess.maked(), id)
@@ -2497,7 +2497,7 @@ module.exports = kconfig = async (kill, message) => {
 				break
 				
 			case 'dono':
-				if (!isOwner) return await kill.reply(from, mess.sodono(), id)
+				if (!isGroupAdmins && !isOwner) return await kill.reply(from, mess.sodono(), id)
 				await kill.reply(from, mess.owner(), id)
 				break
 				
@@ -3023,7 +3023,7 @@ module.exports = kconfig = async (kill, message) => {
 				break
 				
 			case 'recado':
-				if (!isOwner) return await kill.reply(from, mess.sodono(), id)
+				if (!isGroupAdmins && !isOwner) return await kill.reply(from, mess.sodono(), id)
 				if (args.length == 0) return await kill.reply(from, mess.noargs() + 'palavras/words/números/numbers.', id)
 				const newstat = body.slice(8)
 				if (newstat.length >= 250) return await kill.reply(from, mess.letlimit() + '250.', id)
