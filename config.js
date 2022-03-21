@@ -322,7 +322,7 @@ module.exports = kconfig = async (kill, message) => {
 		}
 		
 		// Ative para banir quem mandar todos os tipos de links (Ative removendo a /* e */)
-		/*if (isGroupMsg && !isGroupAdmins && isBotGroupAdmins && isAntiLink && !isOwner && isUrl(chats) && !isBot) return await kill.removeParticipant(groupId, user)*/
+		if (isGroupMsg && !isGroupAdmins && isBotGroupAdmins && isAntiLink && !isOwner && isUrl(chats) && !isBot) return await kill.removeParticipant(groupId, user)
 		
 		// Comandos sem prefix, esse responde se marcar a BOT
 		if (!isFiltered(from) && !isMedia && !isCmd) { try { if (chats.includes(`@${botNumber.replace('@c.us', '')}`)) { await kill.reply(from, chatBotR, id) } } catch (error) { return } }
@@ -2497,7 +2497,7 @@ module.exports = kconfig = async (kill, message) => {
 				break
 				
 			case 'dono':
-				if (!isOwner) return await kill.reply(from, mess.sodono(), id)
+				if (!isGroupAdmins && !isOwner) return await kill.reply(from, mess.sodono(), id)
 				await kill.reply(from, mess.owner(), id)
 				break
 				
